@@ -981,9 +981,6 @@
     }
   });
 
-  // ── Google Sheets endpoint (paste your Apps Script Web App URL here) ──
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzBLNqem-8GGTeQRMp109DT6f8T5V98Ot2tAaa0rtc/exec';
-
   // ── Form submit ──
   document.getElementById('enrollForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -1005,20 +1002,21 @@
 
     if (!valid) { alert('Please fill in all required fields before submitting.'); return; }
 
-    // Collect all form fields
     const fd = new FormData(this);
-
-    // Add selected sessions as comma-separated string
     const sessions = [...document.querySelectorAll('#sessionGrid .session-card.selected')]
       .map(c => c.querySelector('.session-name').textContent).join(', ');
     fd.set('session', sessions);
 
-    // POST to Google Sheets via Apps Script
-    const params = new URLSearchParams(fd).toString();
-    const url = SCRIPT_URL + '?' + params;
+    // Formsubmit.co — no backend needed, sends email on submission
+    fd.append('_cc', 'hellomonikasue@gmail.com');
+    fd.append('_subject', 'New Daruma Camp Enrollment: ' + (fd.get('student_first') || '') + ' ' + (fd.get('student_last') || ''));
+    fd.append('_template', 'table');
+    fd.append('_captcha', 'false');
 
-    fetch(url, { method: 'GET', mode: 'no-cors' })
-      .catch(() => {}); // no-cors responses are opaque — errors are silent
+    fetch('https://formsubmit.co/ajax/stevenhodas@gmail.com', {
+      method: 'POST',
+      body: fd
+    }).catch(() => {});
 
     alert('Thank you! Your enrollment has been submitted. Watch for a confirmation email shortly.');
     this.reset();
