@@ -1062,7 +1062,8 @@
     const clone = document.documentElement.cloneNode(true);
     clone.querySelectorAll('[data-editable]').forEach(el => el.removeAttribute('contenteditable'));
     clone.querySelectorAll('.field-delete').forEach(el => el.remove());
-    clone.body.classList.remove('edit-mode', 'admin-mode');
+    const cloneBody = clone.querySelector('body');
+    if (cloneBody) cloneBody.classList.remove('edit-mode', 'admin-mode');
     return '<!DOCTYPE html>\n' + clone.outerHTML;
   }
 
