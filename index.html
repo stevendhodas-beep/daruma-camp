@@ -385,6 +385,27 @@
     }
     #resetBtn:hover { color: white; }
 
+    #pushBtn {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 14rem;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      gap: .4rem;
+      background: #2da44e;
+      color: white;
+      font-size: .85rem;
+      font-weight: 700;
+      padding: .6rem 1.1rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+    }
+    #pushBtn:hover { background: #238636; }
+    body.admin-mode #pushBtn { display: flex; }
+
     #editToggle, #resetBtn { display: none; }
     body.admin-mode #editToggle, body.admin-mode #resetBtn { display: flex; }
 
@@ -814,6 +835,7 @@
   <span id="editLabel">Edit Labels</span>
 </button>
 <button id="resetBtn" title="Clear saved edits and reload" onclick="localStorage.removeItem('daruma-form-v3');location.reload()">↺</button>
+<button id="pushBtn" title="Save edits to GitHub">⬆ Push</button>
 
 <script>
   const SAVE_KEY = 'daruma-form-v3';
@@ -942,11 +964,12 @@
       clone.querySelectorAll('.field-delete').forEach(el => el.remove());
       clone.body.classList.remove('edit-mode', 'admin-mode');
       const html = '<!DOCTYPE html>\n' + clone.outerHTML;
-      fetch('/save', {
+      fetch('http://localhost:3456/save', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ html })
-      }).catch(() => {});
+      }).then(() => console.log('Saved to disk'))
+        .catch(err => console.error('Save failed:', err));
     } catch(e) {}
   }
 
@@ -1027,6 +1050,75 @@
     updateTotal();
     const sd = document.querySelector('[name="sign_date"]');
     if (sd) sd.value = new Date().toISOString().split('T')[0];
+  });
+
+  // ── Push to GitHub ──
+  const GH_TOKEN_KEY = 'daruma-gh-token';
+  const GH_REPO      = 'stevendhodas-beep/daruma-camp';
+  const GH_FILE      = 'index.html';
+  const GH_API       = 'https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_FILE;
+
+  function getCleanHTML() {
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('[data-editable]').forEach(el => el.removeAttribute('contenteditable'));
+    clone.querySelectorAll('.field-delete').forEach(el => el.remove());
+    clone.body.classList.remove('edit-mode', 'admin-mode');
+    return '<!DOCTYPE html>\n' + clone.outerHTML;
+  }
+
+  document.getElementById('pushBtn').addEventListener('click', async () => {
+    let token = localStorage.getItem(GH_TOKEN_KEY);
+    if (!token) {
+      token = prompt('Enter your GitHub personal access token (stored locally, never sent anywhere except GitHub):');
+      if (!token) return;
+      localStorage.setItem(GH_TOKEN_KEY, token.trim());
+      token = token.trim();
+    }
+
+    const btn = document.getElementById('pushBtn');
+    btn.textContent = '⏳ Pushing…';
+    btn.disabled = true;
+
+    try {
+      // 1. Get current file SHA
+      const metaRes = await fetch(GH_API, {
+        headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github+json' }
+      });
+      if (!metaRes.ok) throw new Error('Could not fetch file metadata (' + metaRes.status + ')');
+      const meta = await metaRes.json();
+      const sha = meta.sha;
+
+      // 2. Encode current HTML as base64
+      const html = getCleanHTML();
+      const b64  = btoa(unescape(encodeURIComponent(html)));
+
+      // 3. Commit
+      const putRes = await fetch(GH_API, {
+        method: 'PUT',
+        headers: {
+          Authorization: 'token ' + token,
+          Accept: 'application/vnd.github+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: 'Update enrollment form via admin editor',
+          content: b64,
+          sha: sha
+        })
+      });
+
+      if (!putRes.ok) {
+        const err = await putRes.json().catch(() => ({}));
+        throw new Error((err.message || putRes.status) + ' — try clearing your token and re-entering it.');
+      }
+
+      btn.textContent = '✓ Pushed!';
+      setTimeout(() => { btn.textContent = '⬆ Push'; btn.disabled = false; }, 3000);
+    } catch (err) {
+      alert('Push failed: ' + err.message);
+      btn.textContent = '⬆ Push';
+      btn.disabled = false;
+    }
   });
 </script>
 </body>
