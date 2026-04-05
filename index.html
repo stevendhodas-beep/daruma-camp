@@ -855,6 +855,11 @@
     }
   })();
 
+  // ── Lock all editable elements for normal users ──
+  document.querySelectorAll('[data-editable]').forEach(el => {
+    el.contentEditable = 'false';
+  });
+
   // ── Admin mode (add ?edit to URL to show edit controls) ──
   if (new URLSearchParams(location.search).has('edit')) {
     document.body.classList.add('admin-mode');
@@ -926,7 +931,23 @@
     } else {
       document.querySelectorAll('.field-delete').forEach(btn => btn.remove());
       saveState();
+      saveToDisk();
     }
+  }
+
+  function saveToDisk() {
+    try {
+      const clone = document.documentElement.cloneNode(true);
+      clone.querySelectorAll('[data-editable]').forEach(el => el.removeAttribute('contenteditable'));
+      clone.querySelectorAll('.field-delete').forEach(el => el.remove());
+      clone.body.classList.remove('edit-mode', 'admin-mode');
+      const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+      fetch('/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ html })
+      }).catch(() => {});
+    } catch(e) {}
   }
 
   // Save editable content on every blur (form + header)
