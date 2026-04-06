@@ -933,10 +933,7 @@
     } catch(e) {}
   }
 
-  // Save editable content on every blur (form + header)
-  document.addEventListener('focusout', e => {
-    if (e.target.hasAttribute('data-editable'))
-  });
+
 
   toggleBtn.addEventListener('click', () => setEditMode(!editing));
 
