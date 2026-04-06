@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en"><head><script src="chrome-extension://fgddmllnllkalaagkghckoinaemmogpe/src/scripts/content/location-spoofing.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daruma Martial Arts Summer Camp — Enrollment</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -497,21 +496,581 @@
     }
     body.edit-mode #editBanner { display: block; }
   </style>
-</head>
-<body>
+<link id="myCss" rel="stylesheet" type="text/css" href="chrome-extension://hlambnnbnnjkabpgemeompijpdliimkm/content/content.css" media="all"><style type="text/css" id="vuetify-theme-stylesheet">.v-application a { color: #1976d2; }
+.v-application .primary {
+  background-color: #1976d2 !important;
+  border-color: #1976d2 !important;
+}
+.v-application .primary--text {
+  color: #1976d2 !important;
+  caret-color: #1976d2 !important;
+}
+.v-application .primary.lighten-5 {
+  background-color: #c7fdff !important;
+  border-color: #c7fdff !important;
+}
+.v-application .primary--text.text--lighten-5 {
+  color: #c7fdff !important;
+  caret-color: #c7fdff !important;
+}
+.v-application .primary.lighten-4 {
+  background-color: #a8e0ff !important;
+  border-color: #a8e0ff !important;
+}
+.v-application .primary--text.text--lighten-4 {
+  color: #a8e0ff !important;
+  caret-color: #a8e0ff !important;
+}
+.v-application .primary.lighten-3 {
+  background-color: #8ac5ff !important;
+  border-color: #8ac5ff !important;
+}
+.v-application .primary--text.text--lighten-3 {
+  color: #8ac5ff !important;
+  caret-color: #8ac5ff !important;
+}
+.v-application .primary.lighten-2 {
+  background-color: #6aaaff !important;
+  border-color: #6aaaff !important;
+}
+.v-application .primary--text.text--lighten-2 {
+  color: #6aaaff !important;
+  caret-color: #6aaaff !important;
+}
+.v-application .primary.lighten-1 {
+  background-color: #488fef !important;
+  border-color: #488fef !important;
+}
+.v-application .primary--text.text--lighten-1 {
+  color: #488fef !important;
+  caret-color: #488fef !important;
+}
+.v-application .primary.darken-1 {
+  background-color: #005eb6 !important;
+  border-color: #005eb6 !important;
+}
+.v-application .primary--text.text--darken-1 {
+  color: #005eb6 !important;
+  caret-color: #005eb6 !important;
+}
+.v-application .primary.darken-2 {
+  background-color: #00479b !important;
+  border-color: #00479b !important;
+}
+.v-application .primary--text.text--darken-2 {
+  color: #00479b !important;
+  caret-color: #00479b !important;
+}
+.v-application .primary.darken-3 {
+  background-color: #003180 !important;
+  border-color: #003180 !important;
+}
+.v-application .primary--text.text--darken-3 {
+  color: #003180 !important;
+  caret-color: #003180 !important;
+}
+.v-application .primary.darken-4 {
+  background-color: #001e67 !important;
+  border-color: #001e67 !important;
+}
+.v-application .primary--text.text--darken-4 {
+  color: #001e67 !important;
+  caret-color: #001e67 !important;
+}
+.v-application .secondary {
+  background-color: #424242 !important;
+  border-color: #424242 !important;
+}
+.v-application .secondary--text {
+  color: #424242 !important;
+  caret-color: #424242 !important;
+}
+.v-application .secondary.lighten-5 {
+  background-color: #c1c1c1 !important;
+  border-color: #c1c1c1 !important;
+}
+.v-application .secondary--text.text--lighten-5 {
+  color: #c1c1c1 !important;
+  caret-color: #c1c1c1 !important;
+}
+.v-application .secondary.lighten-4 {
+  background-color: #a6a6a6 !important;
+  border-color: #a6a6a6 !important;
+}
+.v-application .secondary--text.text--lighten-4 {
+  color: #a6a6a6 !important;
+  caret-color: #a6a6a6 !important;
+}
+.v-application .secondary.lighten-3 {
+  background-color: #8b8b8b !important;
+  border-color: #8b8b8b !important;
+}
+.v-application .secondary--text.text--lighten-3 {
+  color: #8b8b8b !important;
+  caret-color: #8b8b8b !important;
+}
+.v-application .secondary.lighten-2 {
+  background-color: #727272 !important;
+  border-color: #727272 !important;
+}
+.v-application .secondary--text.text--lighten-2 {
+  color: #727272 !important;
+  caret-color: #727272 !important;
+}
+.v-application .secondary.lighten-1 {
+  background-color: #595959 !important;
+  border-color: #595959 !important;
+}
+.v-application .secondary--text.text--lighten-1 {
+  color: #595959 !important;
+  caret-color: #595959 !important;
+}
+.v-application .secondary.darken-1 {
+  background-color: #2c2c2c !important;
+  border-color: #2c2c2c !important;
+}
+.v-application .secondary--text.text--darken-1 {
+  color: #2c2c2c !important;
+  caret-color: #2c2c2c !important;
+}
+.v-application .secondary.darken-2 {
+  background-color: #171717 !important;
+  border-color: #171717 !important;
+}
+.v-application .secondary--text.text--darken-2 {
+  color: #171717 !important;
+  caret-color: #171717 !important;
+}
+.v-application .secondary.darken-3 {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+.v-application .secondary--text.text--darken-3 {
+  color: #000000 !important;
+  caret-color: #000000 !important;
+}
+.v-application .secondary.darken-4 {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+}
+.v-application .secondary--text.text--darken-4 {
+  color: #000000 !important;
+  caret-color: #000000 !important;
+}
+.v-application .accent {
+  background-color: #82b1ff !important;
+  border-color: #82b1ff !important;
+}
+.v-application .accent--text {
+  color: #82b1ff !important;
+  caret-color: #82b1ff !important;
+}
+.v-application .accent.lighten-5 {
+  background-color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+.v-application .accent--text.text--lighten-5 {
+  color: #ffffff !important;
+  caret-color: #ffffff !important;
+}
+.v-application .accent.lighten-4 {
+  background-color: #f8ffff !important;
+  border-color: #f8ffff !important;
+}
+.v-application .accent--text.text--lighten-4 {
+  color: #f8ffff !important;
+  caret-color: #f8ffff !important;
+}
+.v-application .accent.lighten-3 {
+  background-color: #daffff !important;
+  border-color: #daffff !important;
+}
+.v-application .accent--text.text--lighten-3 {
+  color: #daffff !important;
+  caret-color: #daffff !important;
+}
+.v-application .accent.lighten-2 {
+  background-color: #bce8ff !important;
+  border-color: #bce8ff !important;
+}
+.v-application .accent--text.text--lighten-2 {
+  color: #bce8ff !important;
+  caret-color: #bce8ff !important;
+}
+.v-application .accent.lighten-1 {
+  background-color: #9fccff !important;
+  border-color: #9fccff !important;
+}
+.v-application .accent--text.text--lighten-1 {
+  color: #9fccff !important;
+  caret-color: #9fccff !important;
+}
+.v-application .accent.darken-1 {
+  background-color: #6596e2 !important;
+  border-color: #6596e2 !important;
+}
+.v-application .accent--text.text--darken-1 {
+  color: #6596e2 !important;
+  caret-color: #6596e2 !important;
+}
+.v-application .accent.darken-2 {
+  background-color: #467dc6 !important;
+  border-color: #467dc6 !important;
+}
+.v-application .accent--text.text--darken-2 {
+  color: #467dc6 !important;
+  caret-color: #467dc6 !important;
+}
+.v-application .accent.darken-3 {
+  background-color: #2364aa !important;
+  border-color: #2364aa !important;
+}
+.v-application .accent--text.text--darken-3 {
+  color: #2364aa !important;
+  caret-color: #2364aa !important;
+}
+.v-application .accent.darken-4 {
+  background-color: #004c90 !important;
+  border-color: #004c90 !important;
+}
+.v-application .accent--text.text--darken-4 {
+  color: #004c90 !important;
+  caret-color: #004c90 !important;
+}
+.v-application .error {
+  background-color: #ff5252 !important;
+  border-color: #ff5252 !important;
+}
+.v-application .error--text {
+  color: #ff5252 !important;
+  caret-color: #ff5252 !important;
+}
+.v-application .error.lighten-5 {
+  background-color: #ffe4d5 !important;
+  border-color: #ffe4d5 !important;
+}
+.v-application .error--text.text--lighten-5 {
+  color: #ffe4d5 !important;
+  caret-color: #ffe4d5 !important;
+}
+.v-application .error.lighten-4 {
+  background-color: #ffc6b9 !important;
+  border-color: #ffc6b9 !important;
+}
+.v-application .error--text.text--lighten-4 {
+  color: #ffc6b9 !important;
+  caret-color: #ffc6b9 !important;
+}
+.v-application .error.lighten-3 {
+  background-color: #ffa99e !important;
+  border-color: #ffa99e !important;
+}
+.v-application .error--text.text--lighten-3 {
+  color: #ffa99e !important;
+  caret-color: #ffa99e !important;
+}
+.v-application .error.lighten-2 {
+  background-color: #ff8c84 !important;
+  border-color: #ff8c84 !important;
+}
+.v-application .error--text.text--lighten-2 {
+  color: #ff8c84 !important;
+  caret-color: #ff8c84 !important;
+}
+.v-application .error.lighten-1 {
+  background-color: #ff6f6a !important;
+  border-color: #ff6f6a !important;
+}
+.v-application .error--text.text--lighten-1 {
+  color: #ff6f6a !important;
+  caret-color: #ff6f6a !important;
+}
+.v-application .error.darken-1 {
+  background-color: #df323b !important;
+  border-color: #df323b !important;
+}
+.v-application .error--text.text--darken-1 {
+  color: #df323b !important;
+  caret-color: #df323b !important;
+}
+.v-application .error.darken-2 {
+  background-color: #bf0025 !important;
+  border-color: #bf0025 !important;
+}
+.v-application .error--text.text--darken-2 {
+  color: #bf0025 !important;
+  caret-color: #bf0025 !important;
+}
+.v-application .error.darken-3 {
+  background-color: #9f0010 !important;
+  border-color: #9f0010 !important;
+}
+.v-application .error--text.text--darken-3 {
+  color: #9f0010 !important;
+  caret-color: #9f0010 !important;
+}
+.v-application .error.darken-4 {
+  background-color: #800000 !important;
+  border-color: #800000 !important;
+}
+.v-application .error--text.text--darken-4 {
+  color: #800000 !important;
+  caret-color: #800000 !important;
+}
+.v-application .info {
+  background-color: #2196f3 !important;
+  border-color: #2196f3 !important;
+}
+.v-application .info--text {
+  color: #2196f3 !important;
+  caret-color: #2196f3 !important;
+}
+.v-application .info.lighten-5 {
+  background-color: #d4ffff !important;
+  border-color: #d4ffff !important;
+}
+.v-application .info--text.text--lighten-5 {
+  color: #d4ffff !important;
+  caret-color: #d4ffff !important;
+}
+.v-application .info.lighten-4 {
+  background-color: #b5ffff !important;
+  border-color: #b5ffff !important;
+}
+.v-application .info--text.text--lighten-4 {
+  color: #b5ffff !important;
+  caret-color: #b5ffff !important;
+}
+.v-application .info.lighten-3 {
+  background-color: #95e8ff !important;
+  border-color: #95e8ff !important;
+}
+.v-application .info--text.text--lighten-3 {
+  color: #95e8ff !important;
+  caret-color: #95e8ff !important;
+}
+.v-application .info.lighten-2 {
+  background-color: #75ccff !important;
+  border-color: #75ccff !important;
+}
+.v-application .info--text.text--lighten-2 {
+  color: #75ccff !important;
+  caret-color: #75ccff !important;
+}
+.v-application .info.lighten-1 {
+  background-color: #51b0ff !important;
+  border-color: #51b0ff !important;
+}
+.v-application .info--text.text--lighten-1 {
+  color: #51b0ff !important;
+  caret-color: #51b0ff !important;
+}
+.v-application .info.darken-1 {
+  background-color: #007cd6 !important;
+  border-color: #007cd6 !important;
+}
+.v-application .info--text.text--darken-1 {
+  color: #007cd6 !important;
+  caret-color: #007cd6 !important;
+}
+.v-application .info.darken-2 {
+  background-color: #0064ba !important;
+  border-color: #0064ba !important;
+}
+.v-application .info--text.text--darken-2 {
+  color: #0064ba !important;
+  caret-color: #0064ba !important;
+}
+.v-application .info.darken-3 {
+  background-color: #004d9f !important;
+  border-color: #004d9f !important;
+}
+.v-application .info--text.text--darken-3 {
+  color: #004d9f !important;
+  caret-color: #004d9f !important;
+}
+.v-application .info.darken-4 {
+  background-color: #003784 !important;
+  border-color: #003784 !important;
+}
+.v-application .info--text.text--darken-4 {
+  color: #003784 !important;
+  caret-color: #003784 !important;
+}
+.v-application .success {
+  background-color: #4caf50 !important;
+  border-color: #4caf50 !important;
+}
+.v-application .success--text {
+  color: #4caf50 !important;
+  caret-color: #4caf50 !important;
+}
+.v-application .success.lighten-5 {
+  background-color: #dcffd6 !important;
+  border-color: #dcffd6 !important;
+}
+.v-application .success--text.text--lighten-5 {
+  color: #dcffd6 !important;
+  caret-color: #dcffd6 !important;
+}
+.v-application .success.lighten-4 {
+  background-color: #beffba !important;
+  border-color: #beffba !important;
+}
+.v-application .success--text.text--lighten-4 {
+  color: #beffba !important;
+  caret-color: #beffba !important;
+}
+.v-application .success.lighten-3 {
+  background-color: #a2ff9e !important;
+  border-color: #a2ff9e !important;
+}
+.v-application .success--text.text--lighten-3 {
+  color: #a2ff9e !important;
+  caret-color: #a2ff9e !important;
+}
+.v-application .success.lighten-2 {
+  background-color: #85e783 !important;
+  border-color: #85e783 !important;
+}
+.v-application .success--text.text--lighten-2 {
+  color: #85e783 !important;
+  caret-color: #85e783 !important;
+}
+.v-application .success.lighten-1 {
+  background-color: #69cb69 !important;
+  border-color: #69cb69 !important;
+}
+.v-application .success--text.text--lighten-1 {
+  color: #69cb69 !important;
+  caret-color: #69cb69 !important;
+}
+.v-application .success.darken-1 {
+  background-color: #2d9437 !important;
+  border-color: #2d9437 !important;
+}
+.v-application .success--text.text--darken-1 {
+  color: #2d9437 !important;
+  caret-color: #2d9437 !important;
+}
+.v-application .success.darken-2 {
+  background-color: #00791e !important;
+  border-color: #00791e !important;
+}
+.v-application .success--text.text--darken-2 {
+  color: #00791e !important;
+  caret-color: #00791e !important;
+}
+.v-application .success.darken-3 {
+  background-color: #006000 !important;
+  border-color: #006000 !important;
+}
+.v-application .success--text.text--darken-3 {
+  color: #006000 !important;
+  caret-color: #006000 !important;
+}
+.v-application .success.darken-4 {
+  background-color: #004700 !important;
+  border-color: #004700 !important;
+}
+.v-application .success--text.text--darken-4 {
+  color: #004700 !important;
+  caret-color: #004700 !important;
+}
+.v-application .warning {
+  background-color: #fb8c00 !important;
+  border-color: #fb8c00 !important;
+}
+.v-application .warning--text {
+  color: #fb8c00 !important;
+  caret-color: #fb8c00 !important;
+}
+.v-application .warning.lighten-5 {
+  background-color: #ffff9e !important;
+  border-color: #ffff9e !important;
+}
+.v-application .warning--text.text--lighten-5 {
+  color: #ffff9e !important;
+  caret-color: #ffff9e !important;
+}
+.v-application .warning.lighten-4 {
+  background-color: #fffb82 !important;
+  border-color: #fffb82 !important;
+}
+.v-application .warning--text.text--lighten-4 {
+  color: #fffb82 !important;
+  caret-color: #fffb82 !important;
+}
+.v-application .warning.lighten-3 {
+  background-color: #ffdf67 !important;
+  border-color: #ffdf67 !important;
+}
+.v-application .warning--text.text--lighten-3 {
+  color: #ffdf67 !important;
+  caret-color: #ffdf67 !important;
+}
+.v-application .warning.lighten-2 {
+  background-color: #ffc24b !important;
+  border-color: #ffc24b !important;
+}
+.v-application .warning--text.text--lighten-2 {
+  color: #ffc24b !important;
+  caret-color: #ffc24b !important;
+}
+.v-application .warning.lighten-1 {
+  background-color: #ffa72d !important;
+  border-color: #ffa72d !important;
+}
+.v-application .warning--text.text--lighten-1 {
+  color: #ffa72d !important;
+  caret-color: #ffa72d !important;
+}
+.v-application .warning.darken-1 {
+  background-color: #db7200 !important;
+  border-color: #db7200 !important;
+}
+.v-application .warning--text.text--darken-1 {
+  color: #db7200 !important;
+  caret-color: #db7200 !important;
+}
+.v-application .warning.darken-2 {
+  background-color: #bb5900 !important;
+  border-color: #bb5900 !important;
+}
+.v-application .warning--text.text--darken-2 {
+  color: #bb5900 !important;
+  caret-color: #bb5900 !important;
+}
+.v-application .warning.darken-3 {
+  background-color: #9d4000 !important;
+  border-color: #9d4000 !important;
+}
+.v-application .warning--text.text--darken-3 {
+  color: #9d4000 !important;
+  caret-color: #9d4000 !important;
+}
+.v-application .warning.darken-4 {
+  background-color: #802700 !important;
+  border-color: #802700 !important;
+}
+.v-application .warning--text.text--darken-4 {
+  color: #802700 !important;
+  caret-color: #802700 !important;
+}</style></head>
+<body class="" data-new-gr-c-s-check-loaded="14.1280.0" data-gr-ext-installed="" data-gr-aaa-loaded="14.1280.0" data-gr-aaa-notch-connection-id="1775486109110-0.671833202471503" data-new-gr-c-s-loaded="14.1280.0">
 
 <div id="editBanner">✏ EDIT MODE — Click any highlighted text to rename it &nbsp;·&nbsp; Press Escape or click Done to exit</div>
 
 <header>
-  <img src="https://images.squarespace-cdn.com/content/v1/537308cce4b0ca92e9292351/867187bd-5b61-4153-841d-5122e9652acf/Daruma+White+Background+V2.png" alt="Daruma Martial Arts" style="height:90px;width:auto;margin-bottom:.75rem;position:relative;" />
-  <h1><span data-editable>Summer Camp 2026</span></h1>
-  <p data-editable>Ages 3-12 &nbsp;·&nbsp; Enrollment Form</p>
+  <img src="https://images.squarespace-cdn.com/content/v1/537308cce4b0ca92e9292351/867187bd-5b61-4153-841d-5122e9652acf/Daruma+White+Background+V2.png" alt="Daruma Martial Arts" style="height:90px;width:auto;margin-bottom:.75rem;position:relative;">
+  <h1><span data-editable="">Summer Camp 2026</span></h1>
+  <p data-editable="" spellcheck="false">Ages 3-12</p>
 </header>
 
 <main>
 
   <div class="info-banner">
-    ℹ️ <span data-editable>All fields marked with <strong style="color:#c0392b">&nbsp;*&nbsp;</strong> are required. Enrollment is not complete until a confirmation email is received.</span>
+    ℹ️ <span data-editable="">All fields marked with <strong style="color:#c0392b">&nbsp;*&nbsp;</strong> are required. Enrollment is not complete until a confirmation email is received.</span>
   </div>
 
   <div class="progress-wrap">
@@ -520,56 +1079,56 @@
     <div class="progress-step active"></div>
     <div class="progress-step active"></div>
     <div class="progress-step active"></div>
-    <span class="progress-label" data-editable>All sections</span>
+    <span class="progress-label" data-editable="">All sections</span>
   </div>
 
-  <form id="enrollForm" novalidate>
+  <form id="enrollForm" novalidate="">
 
     <!-- 1. WeekSelection -->
     <div class="section-card">
-      <div class="section-title"><span class="section-icon">🗓</span><span data-editable> Camp Weeks</span></div>
+      <div class="section-title"><span class="section-icon">🗓</span><span data-editable=""> Camp Weeks</span></div>
       <div class="field" style="margin-bottom:1rem;">
-        <label><span data-editable>Select One or More Weeks. All sessions are 9am-3pm. Billing will be handled through Kicksite.</span> <span class="req">*</span></label>
+        <label><span data-editable="">Select One or More Weeks. All sessions are 9am-3pm. Billing will be handled through Kicksite.</span> <span class="req">*</span></label>
         <div class="session-grid" id="sessionGrid">
-          <div class="session-card" data-price="600">
-            <input type="checkbox" name="session" value="session1" />
+          <div class="session-card selected" data-price="600">
+            <input type="checkbox" name="session" value="session1" checked="">
             <div class="session-check">✓</div>
-            <div class="session-name" data-editable>Week 1</div>
-            <div class="session-dates" data-editable>June 29 – July 3</div>
-            <div class="session-price" data-editable>$600</div>
+            <div class="session-name" data-editable="">Week 1</div>
+            <div class="session-dates" data-editable="">June 29 – July 3</div>
+            <div class="session-price" data-editable="">$600</div>
+          </div>
+          <div class="session-card selected" data-price="600">
+            <input type="checkbox" name="session" value="session2" checked="">
+            <div class="session-check">✓</div>
+            <div class="session-name" data-editable="">Week 2</div>
+            <div class="session-dates" data-editable="">July 7 – July 11</div>
+            <div class="session-price" data-editable="">$600</div>
           </div>
           <div class="session-card" data-price="600">
-            <input type="checkbox" name="session" value="session2" />
+            <input type="checkbox" name="session" value="session3">
             <div class="session-check">✓</div>
-            <div class="session-name" data-editable>Week 2</div>
-            <div class="session-dates" data-editable>July 7 – July 11</div>
-            <div class="session-price" data-editable>$600</div>
+            <div class="session-name" data-editable="">Week 3</div>
+            <div class="session-dates" data-editable="">July 14 – July 18</div>
+            <div class="session-price" data-editable="">$600</div>
           </div>
           <div class="session-card" data-price="600">
-            <input type="checkbox" name="session" value="session3" />
+            <input type="checkbox" name="session" value="session4">
             <div class="session-check">✓</div>
-            <div class="session-name" data-editable>Week 3</div>
-            <div class="session-dates" data-editable>July 14 – July 18</div>
-            <div class="session-price" data-editable>$600</div>
+            <div class="session-name" data-editable="">Week 4</div>
+            <div class="session-dates" data-editable="">July 21 – July 25</div>
+            <div class="session-price" data-editable="">$600</div>
           </div>
           <div class="session-card" data-price="600">
-            <input type="checkbox" name="session" value="session4" />
+            <input type="checkbox" name="session" value="session5">
             <div class="session-check">✓</div>
-            <div class="session-name" data-editable>Week 4</div>
-            <div class="session-dates" data-editable>July 21 – July 25</div>
-            <div class="session-price" data-editable>$600</div>
-          </div>
-          <div class="session-card" data-price="600">
-            <input type="checkbox" name="session" value="session5" />
-            <div class="session-check">✓</div>
-            <div class="session-name" data-editable>Week 5</div>
-            <div class="session-dates" data-editable>July 28 – Aug 1</div>
-            <div class="session-price" data-editable>$600</div>
+            <div class="session-name" data-editable="">Week 5</div>
+            <div class="session-dates" data-editable="">July 28 – Aug 1</div>
+            <div class="session-price" data-editable="">$600</div>
           </div>
         </div>
-        <div class="session-total" id="sessionTotal">
+        <div class="session-total has-selection" id="sessionTotal">
           <span class="session-total-label">Total</span>
-          <span class="session-total-amount" id="sessionTotalAmt"><span>$0</span></span>
+          <span class="session-total-amount" id="sessionTotalAmt"><span>$1,200</span></span>
         </div>
       </div>
 
@@ -577,20 +1136,20 @@
 
     <!-- 2. Student Information -->
     <div class="section-card">
-      <div class="section-title"><span class="section-icon">🥋</span><span data-editable> Student Information</span></div>
+      <div class="section-title"><span class="section-icon">🥋</span><span data-editable=""> Student Information</span></div>
       <div class="field-grid">
         <div class="field">
-          <label><span data-editable>First Name</span> <span class="req">*</span></label>
-          <input type="text" name="student_first" placeholder="First name" required />
+          <label><span data-editable="">First Name</span> <span class="req">*</span></label>
+          <input type="text" name="student_first" placeholder="First name" required="">
         </div>
         <div class="field">
-          <label><span data-editable>Last Name</span> <span class="req">*</span></label>
-          <input type="text" name="student_last" placeholder="Last name" required />
+          <label><span data-editable="">Last Name</span> <span class="req">*</span></label>
+          <input type="text" name="student_last" placeholder="Last name" required="">
         </div>
         <div class="field">
-          <label><span data-editable>T-Shirt Size</span> <span class="req">*</span></label>
-          <select name="tshirt" required>
-            <option value="" disabled selected>Select size…</option>
+          <label><span data-editable="">T-Shirt Size</span> <span class="req">*</span></label>
+          <select name="tshirt" required="">
+            <option value="" disabled="" selected="">Select size…</option>
             <option>Youth XS (4–5)</option>
             <option>Youth S (6–8)</option>
             <option>Youth M (10–12)</option>
@@ -605,20 +1164,20 @@
 
     <!-- 3. Parent / Guardian -->
     <div class="section-card">
-      <div class="section-title"><span class="section-icon">👤</span><span data-editable> Parent / Guardian</span></div>
+      <div class="section-title"><span class="section-icon">👤</span><span data-editable=""> Parent / Guardian</span></div>
       <div class="field-grid">
         <div class="field">
-          <label><span data-editable>Guardian First Name</span> <span class="req">*</span></label>
-          <input type="text" name="guardian_first" placeholder="First name" required />
+          <label><span data-editable="">Guardian First Name</span> <span class="req">*</span></label>
+          <input type="text" name="guardian_first" placeholder="First name" required="">
         </div>
         <div class="field">
-          <label><span data-editable>Guardian Last Name</span> <span class="req">*</span></label>
-          <input type="text" name="guardian_last" placeholder="Last name" required />
+          <label><span data-editable="">Guardian Last Name</span> <span class="req">*</span></label>
+          <input type="text" name="guardian_last" placeholder="Last name" required="">
         </div>
         <div class="field">
-          <label><span data-editable>Relationship to Student</span> <span class="req">*</span></label>
-          <select name="relationship" required>
-            <option value="" disabled selected>Select…</option>
+          <label><span data-editable="">Relationship to Student</span> <span class="req">*</span></label>
+          <select name="relationship" required="">
+            <option value="" disabled="" selected="">Select…</option>
             <option>Parent</option>
             <option>Legal Guardian</option>
             <option>Grandparent</option>
@@ -626,93 +1185,72 @@
           </select>
         </div>
         <div class="field">
-          <label><span data-editable>Primary Phone</span> <span class="req">*</span></label>
-          <input type="tel" name="phone_primary" placeholder="(555) 000-0000" required />
+          <label><span data-editable="">Primary Phone</span> <span class="req">*</span></label>
+          <input type="tel" name="phone_primary" placeholder="(555) 000-0000" required="">
         </div>
+        
         <div class="field">
-          <label><span data-editable>Alternate Phone</span></label>
-          <input type="tel" name="phone_alt" placeholder="(555) 000-0000" />
-        </div>
-        <div class="field">
-          <label><span data-editable>Email Address</span> <span class="req">*</span></label>
-          <input type="email" name="email" placeholder="you@example.com" required />
+          <label><span data-editable="">Email Address</span> <span class="req">*</span></label>
+          <input type="email" name="email" placeholder="you@example.com" required="">
         </div>
         <div class="field span-2">
-          <label><span data-editable>Home Address</span> <span class="req">*</span></label>
-          <input type="text" name="address" placeholder="Street address" required />
+          <label><span data-editable="">Home Address</span> <span class="req">*</span></label>
+          <input type="text" name="address" placeholder="Street address" required="">
         </div>
         <div class="field">
-          <label><span data-editable>City</span> <span class="req">*</span></label>
-          <input type="text" name="city" placeholder="City" required />
+          <label><span data-editable="">City</span> <span class="req">*</span></label>
+          <input type="text" name="city" placeholder="City" required="">
         </div>
         <div class="field">
-          <label><span data-editable>State</span></label>
-          <input type="text" name="state" placeholder="State" maxlength="2" />
+          <label><span data-editable="">State</span></label>
+          <input type="text" name="state" placeholder="State" maxlength="2">
         </div>
         <div class="field">
-          <label><span data-editable>ZIP Code</span></label>
-          <input type="text" name="zip" placeholder="12345" maxlength="10" />
+          <label><span data-editable="">ZIP Code</span></label>
+          <input type="text" name="zip" placeholder="12345" maxlength="10">
         </div>
       </div>
     </div>
 
     <!-- 4. Emergency Contact -->
     <div class="section-card">
-      <div class="section-title"><span class="section-icon">🚨</span><span data-editable> Emergency Contact</span></div>
-      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1rem;" data-editable>Must be a different person from the primary guardian listed above.</p>
+      <div class="section-title"><span class="section-icon">🚨</span><span data-editable=""> Emergency Contact</span></div>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1rem;" data-editable="">Must be a different person from the primary guardian listed above.</p>
       <div class="field-grid">
         <div class="field">
-          <label><span data-editable>Full Name</span> <span class="req">*</span></label>
-          <input type="text" name="ec_name" placeholder="Full name" required />
+          <label><span data-editable="">Full Name</span> <span class="req">*</span></label>
+          <input type="text" name="ec_name" placeholder="Full name" required="">
         </div>
         <div class="field">
-          <label><span data-editable>Relationship</span> <span class="req">*</span></label>
-          <input type="text" name="ec_relationship" placeholder="e.g. Aunt, Uncle, Family friend" required />
+          <label><span data-editable="">Relationship</span> <span class="req">*</span></label>
+          <input type="text" name="ec_relationship" placeholder="e.g. Aunt, Uncle, Family friend" required="">
         </div>
         <div class="field">
-          <label><span data-editable>Phone</span> <span class="req">*</span></label>
-          <input type="tel" name="ec_phone" placeholder="(555) 000-0000" required />
+          <label><span data-editable="">Phone</span> <span class="req">*</span></label>
+          <input type="tel" name="ec_phone" placeholder="(555) 000-0000" required="">
         </div>
-        <div class="field">
-          <label><span data-editable>Alternate Phone</span></label>
-          <input type="tel" name="ec_phone_alt" placeholder="(555) 000-0000" />
-        </div>
+        
       </div>
     </div>
 
     <!-- 5. Medical & Health -->
     <div class="section-card">
-      <div class="section-title"><span class="section-icon">🏥</span><span data-editable> Medical &amp; Health</span></div>
+      <div class="section-title"><span class="section-icon">🏥</span><span data-editable=""> Medical &amp; Health</span></div>
       <div class="field-grid full">
+        
         <div class="field">
-          <label><span data-editable>Known Allergies (food, medication, environmental)</span></label>
-          <textarea name="allergies" placeholder="List any allergies, or write 'None'"></textarea>
-        </div>
-        <div class="field">
-          <label><span data-editable>Current Medications</span></label>
+          <label><span data-editable="">Current Medications</span></label>
           <textarea name="medications" placeholder="Name, dosage, and schedule — or write 'None'"></textarea>
         </div>
+        
+        
+        
+        
         <div class="field">
-          <label><span data-editable>Medical Conditions / Physical Limitations</span></label>
-          <textarea name="medical_conditions" placeholder="Asthma, diabetes, recent injuries, etc. — or write 'None'"></textarea>
-        </div>
-        <div class="field">
-          <label><span data-editable>Primary Care Physician</span></label>
-          <input type="text" name="doctor" placeholder="Dr. Name — Clinic Name" />
-        </div>
-        <div class="field">
-          <label><span data-editable>Physician Phone</span></label>
-          <input type="tel" name="doctor_phone" placeholder="(555) 000-0000" />
-        </div>
-        <div class="field">
-          <label><span data-editable>Insurance Provider</span></label>
-          <input type="text" name="insurance" placeholder="Provider name &amp; policy number" />
-        </div>
-        <div class="field">
-          <label><span data-editable>Can the student self-administer medication?</span> <span class="req">*</span></label>
+          <label><span data-editable="">Can the student self-administer medication?</span> <span class="req">*</span></label>
           <div class="radio-group">
-            <label><input type="radio" name="self_medicate" value="yes" required /> <span data-editable>Yes</span></label>
-            <label><input type="radio" name="self_medicate" value="no" /> <span data-editable>No</span></label>
+            <label><input type="radio" name="self_medicate" value="yes" required=""> <span data-editable="">Yes</span></label>
+            <label><input type="radio" name="self_medicate" value="no"> <span data-editable="">No</span></label>
           </div>
         </div>
       </div>
@@ -720,32 +1258,15 @@
 
     <!-- 6. Additional Info -->
     <div class="section-card">
-      <div class="section-title"><span class="section-icon">📋</span><span data-editable> Additional Information</span></div>
+      <div class="section-title"><span class="section-icon">📋</span><span data-editable=""> Additional Information</span></div>
       <div class="field-grid full">
+        
+        
+        
         <div class="field">
-          <label><span data-editable>Dietary Restrictions / Food Preferences</span></label>
-          <div class="check-group">
-            <label><input type="checkbox" name="diet" value="vegetarian" /> <span data-editable>Vegetarian</span></label>
-            <label><input type="checkbox" name="diet" value="vegan" /> <span data-editable>Vegan</span></label>
-            <label><input type="checkbox" name="diet" value="gluten_free" /> <span data-editable>Gluten-free</span></label>
-            <label><input type="checkbox" name="diet" value="nut_free" /> <span data-editable>Nut-free</span></label>
-            <label><input type="checkbox" name="diet" value="halal" /> <span data-editable>Halal</span></label>
-            <label><input type="checkbox" name="diet" value="kosher" /> <span data-editable>Kosher</span></label>
-            <label><input type="checkbox" name="diet" value="other_diet" /> <span data-editable>Other</span></label>
-          </div>
-        </div>
-        <div class="field">
-          <label><span data-editable>Dietary Notes</span></label>
-          <input type="text" name="diet_notes" placeholder="Describe any other restrictions…" />
-        </div>
-        <div class="field">
-          <label><span data-editable>Special Needs / Accommodations Requested</span></label>
-          <textarea name="accommodations" placeholder="Learning differences, mobility, sensory, or other needs we should know about…"></textarea>
-        </div>
-        <div class="field">
-          <label><span data-editable>How did you hear about Daruma Camp?</span></label>
+          <label><span data-editable="">How did you hear about Daruma Camp?</span></label>
           <select name="referral">
-            <option value="" disabled selected>Select…</option>
+            <option value="" disabled="" selected="">Select…</option>
             <option>Returning camper / family</option>
             <option>Friend or family referral</option>
             <option>Instructor / dojo referral</option>
@@ -757,7 +1278,7 @@
           </select>
         </div>
         <div class="field">
-          <label><span data-editable>Additional Comments</span></label>
+          <label><span data-editable="">Additional Comments</span></label>
           <textarea name="comments" placeholder="Anything else you'd like the camp directors to know…"></textarea>
         </div>
       </div>
@@ -765,77 +1286,77 @@
 
     <!-- 7. Consents & Waivers -->
     <div class="section-card">
-      <div class="section-title"><span class="section-icon">✍️</span><span data-editable> Consents &amp; Waivers</span></div>
-      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.2rem;" data-editable>Please read and acknowledge each item. All items are required.</p>
+      <div class="section-title"><span class="section-icon">✍️</span><span data-editable=""> Consents &amp; Waivers</span></div>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.2rem;" data-editable="">Please read and acknowledge each item. All items are required.</p>
 
       <div class="consent-item">
-        <input type="checkbox" name="consent_medical" id="c1" required />
+        <input type="checkbox" name="consent_medical" id="c1" required="">
         <div class="consent-text">
-          <strong data-editable>Medical Treatment Authorization</strong>
-          <span data-editable>I authorize Daruma Martial Arts Camp staff to seek emergency medical treatment for my child if I cannot be reached in time. I understand that all reasonable attempts will be made to contact me first.</span>
+          <strong data-editable="">Medical Treatment Authorization</strong>
+          <span data-editable="">I authorize Daruma Martial Arts Camp staff to seek emergency medical treatment for my child if I cannot be reached in time. I understand that all reasonable attempts will be made to contact me first.</span>
         </div>
       </div>
 
       <div class="consent-item">
-        <input type="checkbox" name="consent_liability" id="c2" required />
+        <input type="checkbox" name="consent_liability" id="c2" required="">
         <div class="consent-text">
-          <strong data-editable>Liability Waiver</strong>
-          <span data-editable>I acknowledge that martial arts activities involve physical contact and inherent risk of injury. I release Daruma Martial Arts Camp, its instructors, and staff from liability for injuries arising from normal participation in camp activities.</span>
+          <strong data-editable="">Liability Waiver</strong>
+          <span data-editable="">I acknowledge that martial arts activities involve physical contact and inherent risk of injury. I release Daruma Martial Arts Camp, its instructors, and staff from liability for injuries arising from normal participation in camp activities.</span>
         </div>
       </div>
 
       <div class="consent-item">
-        <input type="checkbox" name="consent_photo" id="c3" required />
+        <input type="checkbox" name="consent_photo" id="c3" required="">
         <div class="consent-text">
-          <strong data-editable>Photo &amp; Media Release</strong>
-          <span data-editable>I grant Daruma Martial Arts Camp permission to photograph and/or video my child during camp activities for use in promotional materials, social media, and website content. My child will not be identified by full name without separate written consent.</span>
+          <strong data-editable="">Photo &amp; Media Release</strong>
+          <span data-editable="">I grant Daruma Martial Arts Camp permission to photograph and/or video my child during camp activities for use in promotional materials, social media, and website content. My child will not be identified by full name without separate written consent.</span>
         </div>
       </div>
 
       <div class="consent-item">
-        <input type="checkbox" name="consent_conduct" id="c4" required />
+        <input type="checkbox" name="consent_conduct" id="c4" required="">
         <div class="consent-text">
-          <strong data-editable>Code of Conduct</strong>
-          <span data-editable>I have reviewed the following rules with my child: Be respectful to instructors, teammates, and yourself. Use martial arts skills only for practice — never to bully or harm others. Listen and follow instructions the first time. Take care of equipment and the training space. Include everyone and cheer each other on. Have fun and try your best every day. I understand that unsafe or disrespectful behavior may result in dismissal from camp without refund.</span>
+          <strong data-editable="">Code of Conduct</strong>
+          <span data-editable="">I have reviewed the following rules with my child: Be respectful to instructors, teammates, and yourself. Use martial arts skills only for practice — never to bully or harm others. Listen and follow instructions the first time. Take care of equipment and the training space. Include everyone and cheer each other on. Have fun and try your best every day. I understand that unsafe or disrespectful behavior may result in dismissal from camp without refund.</span>
         </div>
       </div>
 
       <div class="consent-item">
-        <input type="checkbox" name="consent_offsite" id="c5" required />
+        <input type="checkbox" name="consent_offsite" id="c5" required="">
         <div class="consent-text">
-          <strong data-editable>Off-Site Activities</strong>
-          <span data-editable>I grant permission for my child to participate in off-site activities organized by Daruma Martial Arts Camp, including field trips and competitions. I understand that transportation will be provided and that all off-site events are supervised by qualified staff. I acknowledge the inherent risks associated with travel and off-site activities and release Daruma Martial Arts Camp from liability for incidents arising from normal participation in such events.</span>
+          <strong data-editable="">Off-Site Activities</strong>
+          <span data-editable="">I grant permission for my child to participate in off-site activities organized by Daruma Martial Arts Camp. I acknowledge the inherent risks associated with travel and off-site activities and release Daruma Martial Arts Camp from liability for incidents arising from normal participation in such events.</span>
         </div>
       </div>
 
       <div class="field" style="margin-top:1.5rem;">
-        <label><span data-editable>Parent / Guardian Signature (Full Name)</span> <span class="req">*</span></label>
-        <input type="text" name="signature" placeholder="Type your full legal name to sign" required />
+        <label><span data-editable="">Parent / Guardian Signature (Full Name)</span> <span class="req">*</span></label>
+        <input type="text" name="signature" placeholder="Type your full legal name to sign" required="">
       </div>
       <div class="field" style="margin-top:.75rem;">
-        <label><span data-editable>Date</span> <span class="req">*</span></label>
-        <input type="date" name="sign_date" required />
+        <label><span data-editable="">Date</span> <span class="req">*</span></label>
+        <input type="date" name="sign_date" required="">
       </div>
     </div>
 
     <!-- Submit -->
     <div class="submit-area">
       <button type="submit" class="btn-submit">
-        ⬤ &nbsp;<span data-editable>Complete Enrollment</span>
+        ⬤ &nbsp;<span data-editable="">Complete Enrollment</span>
       </button>
-      <p class="submit-note" data-editable>A confirmation email will be sent to the address provided above. Enrollment is pending until payment is processed.</p>
+      <p class="submit-note" data-editable="">A confirmation email will be sent to the address provided above. Enrollment is pending until payment is processed.</p>
     </div>
 
   </form>
 </main>
 
 <!-- Edit toggle button -->
-<button id="editToggle" title="Toggle label editing">
+<button id="editToggle" title="Toggle label editing" class="">
   <span class="dot"></span>
   <span id="editLabel">Edit Labels</span>
 </button>
 <button id="resetBtn" title="Clear saved edits and reload" onclick="localStorage.removeItem('daruma-form-v3');location.reload()">↺</button>
-<button id="pushBtn" title="Save edits to GitHub">⬆ Push</button>
+<button id="pushBtn" title="Save edits to GitHub" disabled="">⏳ Pushing…</button>
 
 <script>
   const SAVE_KEY = 'daruma-form-v3';
@@ -1116,5 +1637,23 @@
     }
   });
 </script>
-</body>
-</html>
+
+
+<style>.v-application--wrap { width: 100%; } div.v-application#app .v-sheet.v-snack__wrapper { background: linear-gradient(to bottom right, #bf45f5, #4172f6); }</style><div><center><div data-app="true" class="v-application v-application--is-ltr theme--light" id="app" style="width: 100%;"><div class="v-application--wrap"><div role="dialog" class="v-dialog__container" z-index="2147483646"><!----></div> <div role="dialog" class="v-dialog__container" elevation="24" z-index="214748367"><!----></div> <div role="dialog" class="v-dialog__container" elevation="24" z-index="214748367"><!----></div> <div role="dialog" class="v-dialog__container" elevation="24" z-index="214748367"><!----></div> <div role="dialog" class="v-dialog__container" elevation="24" z-index="214748367"><!----></div> <div class="v-snack v-snack--bottom v-snack--has-background" style="padding-bottom: 0px; padding-top: 0px;"><div class="v-snack__wrapper v-sheet theme--dark elevation-24" style="background-color: rgb(191, 69, 245); border-color: rgb(191, 69, 245); display: none;"><div role="status" aria-live="polite" class="v-snack__content"><center>
+
+      CardPointers can now <strong>automatically add</strong> all of your offers for you when you log in
+      <br> <!----> <br>
+        Enable automatic adding of offers now?
+      <br> <br> <button type="button" class="mb-2 v-btn v-btn--is-elevated v-btn--has-bg theme--light v-size--default"><span class="v-btn__content"><span style="color: rgb(191, 69, 245);">Enable</span></span></button> <br> <button type="button" class="v-btn v-btn--plain theme--dark v-size--default" style="opacity: 0.8;"><span class="v-btn__content">
+          Skip
+        </span></button></center></div><div class="v-snack__action "></div></div></div> <div class="v-snack v-snack--bottom v-snack--has-background" style="padding-bottom: 0px; padding-top: 0px;"><div class="v-snack__wrapper v-sheet theme--dark elevation-24" style="background-color: rgb(191, 69, 245); border-color: rgb(191, 69, 245); display: none;"><div role="status" aria-live="polite" class="v-snack__content"><center><strong><span>Automatically syncing offers...</span></strong> <!----> <!----> <!----> <!----> <!----> <!----></center></div><div class="v-snack__action "></div></div></div> <div class="v-snack v-snack--bottom v-snack--has-background" style="padding-bottom: 0px; padding-top: 0px;"><div class="v-snack__wrapper v-sheet theme--dark elevation-24" style="background-color: rgb(191, 69, 245); border-color: rgb(191, 69, 245); display: none;"><div role="status" aria-live="polite" class="v-snack__content"><center><br>          
+        Adding all offers to all cards at once requires <strong>CardPointers+</strong>.
+        <br>
+        Upgrade today to save even more time &amp; money.
+        <br> <br> <button type="button" class="mb-2 v-btn v-btn--is-elevated v-btn--has-bg theme--light v-size--default"><span class="v-btn__content"><span style="color: rgb(191, 69, 245);">Upgrade</span></span></button> <br> <button type="button" class="v-btn v-btn--plain theme--dark v-size--default" style="opacity: 0.8;"><span class="v-btn__content">
+          Close
+        </span></button></center></div><div class="v-snack__action "></div></div></div> <div class="v-snack shrink v-snack--bottom v-snack--has-background" gradient="#f72047,#ffd200,#1feaea" style="padding-bottom: 0px; padding-top: 0px;"><div class="v-snack__wrapper v-sheet theme--dark elevation-24" style="width: 320px; display: none;"><div role="status" aria-live="polite" class="v-snack__content"><div class="v-card__title pa-0 ma-0"><div class="row pb-2"><div class="col col-11" style="position: inherit; flex-basis: 0px; flex-grow: 1; font-size: 16px;">
+          
+        </div> <div class="col col-1" style="position: inherit;"><button type="button" class="v-btn v-btn--icon v-btn--round theme--dark v-size--default" role="button" aria-haspopup="true" aria-expanded="false" style="position: absolute; right: 10px; top: 10px;"><span class="v-btn__content"><span aria-hidden="true" class="v-icon notranslate theme--dark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" class="v-icon__svg"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"></path></svg></span></span></button><div class="v-menu"><!----></div></div></div></div> <div class="row" style="cursor: pointer;"><div class="col col-11" style="position: inherit; flex-basis: 0px; flex-grow: 1; line-height: 20px; letter-spacing: 0.25px; font-weight: 400;"><!----><!----> <!----> <span style="font-size: 14px;">Use <strong>American Express Gold Card</strong></span><br> <span style="font-size: 12px; opacity: 0.8;">Save undefined% total on purchase (undefined×undefined¢)</span> <!----> <!----><!----> <!----></div> <div class="col col-1" style="position: inherit;"><button type="button" class="v-btn v-btn--icon v-btn--round theme--dark v-size--default" style="position: absolute; right: 10px;"><span class="v-btn__content"><span aria-hidden="true" class="v-icon notranslate theme--dark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-hidden="true" class="v-icon__svg"><path d="M12,18.17L8.83,15L7.42,16.41L12,21L16.59,16.41L15.17,15M12,5.83L15.17,9L16.58,7.59L12,3L7.41,7.59L8.83,9L12,5.83Z"></path></svg></span> <!----></span></button></div></div> <!----> <!----> <!----></div><div class="v-snack__action "></div></div></div> <div class="v-snack v-snack--bottom v-snack--has-background" style="padding-bottom: 0px; padding-top: 0px;"><div class="v-snack__wrapper v-sheet theme--dark elevation-24" style="background-color: rgb(191, 69, 245); border-color: rgb(191, 69, 245); display: none;"><div role="status" aria-live="polite" class="v-snack__content"><center><br>
+      Something went wrong. Please try refreshing the page, or if the issue persists, please contact support@cardpointers.com.
+      <br> <span style="display: none;"><br></span></center></div><div class="v-snack__action "></div></div></div></div></div></center></div><div class="Kudos"><style>@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa0ZL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2ZL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa0ZL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2ZL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa0ZL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2ZL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa0ZL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2ZL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:"Inter";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2JL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:"Inter";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa0ZL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:"Inter";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2ZL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+1F00-1FFF}@font-face{font-family:"Inter";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1pL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}@font-face{font-family:"Inter";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa2pL7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:"Inter";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa25L7W0Q5n-wU.woff2) format("woff2");unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:"Inter";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}.Kudos{z-index:2147483647;position:fixed;box-sizing:border-box;margin:0px;padding:0px;right:0px;bottom:0px;font-size:16px;font-family:"Inter",sans-serif;line-height:1;pointer-events:auto !important;-webkit-font-smoothing:antialiased}.Kudos-Mobile{font-size:16px;font-family:"Inter",sans-serif;line-height:1;pointer-events:auto !important;-webkit-font-smoothing:antialiased}</style></div></body><ah-screenshot></ah-screenshot><ah-trigger></ah-trigger><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration><grammarly-assistant-notch-view role="presentation" data-grammarly-ignore-keyboard-events="true" data-grammarly-shadow-root="true" class="dnXmp" style="--rem: 16;"></grammarly-assistant-notch-view></html>
