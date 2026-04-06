@@ -834,51 +834,11 @@
   <span class="dot"></span>
   <span id="editLabel">Edit Labels</span>
 </button>
-<button id="resetBtn" title="Clear saved edits and reload" onclick="localStorage.removeItem('daruma-form-v3');location.reload()">↺</button>
+<button id="resetBtn" title="Clear saved edits and reload" onclick="location.reload()">↺</button>
 <button id="pushBtn" title="Save edits to GitHub">⬆ Push</button>
 
 <script>
-  const SAVE_KEY = 'daruma-form-v3';
-
-  // Clear any stale keys from previous versions
-  ['daruma-form-v1', 'daruma-form-v2'].forEach(k => localStorage.removeItem(k));
-
-  // ── Persist & restore ──
-  function saveState() {
-    if (editing) return;
-    try {
-      document.querySelectorAll('#enrollForm input[type="checkbox"], #enrollForm input[type="radio"]').forEach(el => {
-        el.checked ? el.setAttribute('checked', '') : el.removeAttribute('checked');
-      });
-      localStorage.setItem(SAVE_KEY, JSON.stringify({
-        form:   document.getElementById('enrollForm').innerHTML,
-        header: document.querySelector('header').innerHTML
-      }));
-    } catch(e) {}
   }
-
-  (function restoreState() {
-    // Only restore admin label edits in edit mode — normal users always get a clean form
-    if (!new URLSearchParams(location.search).has('edit')) return;
-    try {
-      const raw = localStorage.getItem(SAVE_KEY);
-      if (!raw) return;
-      const saved = JSON.parse(raw);
-      if (saved.form) {
-        const form = document.getElementById('enrollForm');
-        form.innerHTML = saved.form;
-        form.querySelectorAll('[data-editable]').forEach(el => el.removeAttribute('contenteditable'));
-        form.querySelectorAll('.field-delete').forEach(btn => btn.remove());
-      }
-      if (saved.header) {
-        document.querySelector('header').innerHTML = saved.header;
-        document.querySelector('header').querySelectorAll('[data-editable]').forEach(el => el.removeAttribute('contenteditable'));
-      }
-    } catch(e) {
-      localStorage.removeItem(SAVE_KEY);
-    }
-  })();
-
   // ── Lock all editable elements for normal users ──
   document.querySelectorAll('[data-editable]').forEach(el => {
     el.contentEditable = 'false';
@@ -925,7 +885,6 @@
     card.classList.toggle('selected');
     card.querySelector('input[type="checkbox"]').checked = card.classList.contains('selected');
     updateTotal();
-    saveState();
   });
 
   // ── Edit mode ──
@@ -949,12 +908,11 @@
         btn.className = 'field-delete';
         btn.title = 'Delete field';
         btn.textContent = '×';
-        btn.addEventListener('click', () => { field.remove(); saveState(); });
+        btn.addEventListener('click', () => { field.remove(); });
         field.appendChild(btn);
       });
     } else {
       document.querySelectorAll('.field-delete').forEach(btn => btn.remove());
-      saveState();
       saveToDisk();
     }
   }
@@ -977,7 +935,7 @@
 
   // Save editable content on every blur (form + header)
   document.addEventListener('focusout', e => {
-    if (e.target.hasAttribute('data-editable')) saveState();
+    if (e.target.hasAttribute('data-editable'))
   });
 
   toggleBtn.addEventListener('click', () => setEditMode(!editing));
@@ -1044,7 +1002,6 @@
     }).catch(() => {});
 
     alert('Thank you! Your enrollment has been submitted. Watch for a confirmation email shortly.');
-    localStorage.removeItem(SAVE_KEY);
     location.reload();
   });
 
