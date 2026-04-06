@@ -1030,36 +1030,33 @@
     btn.disabled = true;
 
     try {
-      // 1. Get current file SHA
-      const metaRes = await fetch(GH_API, {
-        headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github+json' }
-      });
-      if (!metaRes.ok) throw new Error('Could not fetch file metadata (' + metaRes.status + ')');
-      const meta = await metaRes.json();
-      const sha = meta.sha;
+      const fullHTML   = getCleanHTML();
+      const noLogoHTML = fullHTML.replace(/\s*<img[^>]*Daruma[^>]*>\/?>\s*\n?/i, '\n');
+      const noHdrHTML  = fullHTML.replace(/<header>[\s\S]*?<\/header>\s*\n?/, '');
 
-      // 2. Encode current HTML as base64
-      const html = getCleanHTML();
-      const b64  = btoa(unescape(encodeURIComponent(html)));
+      const files = [
+        { file: 'index.html',          html: fullHTML,   msg: 'Update enrollment form via admin editor' },
+        { file: 'embed-no-logo.html',  html: noLogoHTML, msg: 'Update embed-no-logo via admin editor' },
+        { file: 'embed-no-header.html',html: noHdrHTML,  msg: 'Update embed-no-header via admin editor' }
+      ];
 
-      // 3. Commit
-      const putRes = await fetch(GH_API, {
-        method: 'PUT',
-        headers: {
-          Authorization: 'token ' + token,
-          Accept: 'application/vnd.github+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: 'Update enrollment form via admin editor',
-          content: b64,
-          sha: sha
-        })
-      });
+      const BASE = 'https://api.github.com/repos/' + GH_REPO + '/contents/';
+      const ghHeaders = { Authorization: 'token ' + token, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' };
 
-      if (!putRes.ok) {
-        const err = await putRes.json().catch(() => ({}));
-        throw new Error((err.message || putRes.status) + ' — try clearing your token and re-entering it.');
+      for (const f of files) {
+        const metaRes = await fetch(BASE + f.file, { headers: ghHeaders });
+        if (!metaRes.ok) throw new Error('Could not fetch SHA for ' + f.file + ' (' + metaRes.status + ')');
+        const { sha } = await metaRes.json();
+        const b64 = btoa(unescape(encodeURIComponent(f.html)));
+        const putRes = await fetch(BASE + f.file, {
+          method: 'PUT',
+          headers: ghHeaders,
+          body: JSON.stringify({ message: f.msg, content: b64, sha })
+        });
+        if (!putRes.ok) {
+          const err = await putRes.json().catch(() => ({}));
+          throw new Error(f.file + ': ' + (err.message || putRes.status));
+        }
       }
 
       btn.textContent = '✓ Pushed!';
