@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daruma Martial Arts Summer Camp — Enrollment</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #c0392b;
+      --red-dk: #96281b;
+      --ink:    #1a1a2e;
+      --muted:  #5a5a72;
+      --border: #d4d4e0;
+      --bg:     #f5f4f0;
+      --white:  #ffffff;
+      --accent: #e8e0d0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── Header (removed for embed) ── */
+    header {
+      background: var(--ink);
+      color: var(--white);
+      text-align: center;
+      padding: 2.5rem 1rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 24px,
+        rgba(255,255,255,.03) 24px,
+        rgba(255,255,255,.03) 25px
+      );
+    }
+    .daruma-mark {
+      font-size: 3.2rem;
+      line-height: 1;
+      margin-bottom: .4rem;
+      position: relative;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      position: relative;
+    }
+    header h1 .red { color: var(--red); }
+    header p {
+      margin-top: .5rem;
+      font-size: 1.9rem;
+      color: #aaa;
+      position: relative;
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 760px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+
+    /* ── Progress bar ── */
+    .progress-wrap {
+      display: flex;
+      gap: .5rem;
+      margin-bottom: 2rem;
+      align-items: center;
+    }
+    .progress-step {
+      flex: 1;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--border);
+      transition: background .3s;
+    }
+    .progress-step.active { background: var(--red); }
+    .progress-label {
+      font-size: .75rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ── Card sections ── */
+    .section-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--red);
+      margin-bottom: 1.5rem;
+      padding-bottom: .75rem;
+      border-bottom: 2px solid var(--accent);
+    }
+    .section-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+    /* ── Form fields ── */
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .field-grid.triple { grid-template-columns: 1fr 1fr 1fr; }
+    .field-grid.full   { grid-template-columns: 1fr; }
+    @media (max-width: 560px) {
+      .field-grid, .field-grid.triple { grid-template-columns: 1fr; }
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+    }
+    .field.span-2 { grid-column: span 2; }
+    @media (max-width: 560px) { .field.span-2 { grid-column: span 1; } }
+
+    label {
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    label .req { color: var(--red); margin-left: 2px; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: .6rem .8rem;
+      font-size: .95rem;
+      border: 1.5px solid var(--border);
+      border-radius: 7px;
+      background: var(--white);
+      color: var(--ink);
+      transition: border-color .2s, box-shadow .2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(192,57,43,.12);
+    }
+    textarea { resize: vertical; min-height: 80px; }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a5a72' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .75rem center;
+      padding-right: 2.2rem;
+    }
+
+    /* ── Radio / Checkbox groups ── */
+    .radio-group, .check-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .radio-group label, .check-group label {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .88rem;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: .4rem .8rem;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+    }
+    .radio-group input[type="radio"],
+    .check-group input[type="checkbox"] {
+      accent-color: var(--red);
+      width: 15px; height: 15px;
+    }
+    .radio-group label:has(input:checked),
+    .check-group label:has(input:checked) {
+      border-color: var(--red);
+      background: #fdf0ee;
+    }
+
+    /* ── Sessions ── */
+    .session-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: .75rem;
+    }
+    .session-card {
+      border: 1.5px solid var(--border);
+      border-radius: 9px;
+      padding: 1rem 1rem .85rem;
+      cursor: pointer;
+      transition: border-color .2s, background .2s, box-shadow .2s;
+      position: relative;
+      user-select: none;
+    }
+    .session-card:hover { border-color: #aaa; }
+    .session-card.selected {
+      border-color: var(--red);
+      background: #fdf0ee;
+      box-shadow: 0 0 0 3px rgba(192,57,43,.1);
+    }
+    .session-card input[type="checkbox"] { display: none; }
+    .session-check {
+      position: absolute;
+      top: .55rem; right: .55rem;
+      width: 18px; height: 18px;
+      border-radius: 4px;
+      border: 2px solid var(--border);
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem; color: transparent;
+      transition: all .15s;
+    }
+    .session-card.selected .session-check {
+      background: var(--red);
+      border-color: var(--red);
+      color: white;
+    }
+    .session-card .session-name { font-weight: 700; font-size: .9rem; padding-right: 1.2rem; }
+    .session-card .session-dates { font-size: .75rem; color: var(--muted); margin-top: .25rem; }
+    .session-card .session-price { font-size: .88rem; color: var(--red); font-weight: 700; margin-top: .5rem; }
+
+    /* ── Weektotal ── */
+    .session-total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1rem;
+      padding: .75rem 1rem;
+      background: var(--bg);
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      font-size: .9rem;
+      transition: border-color .2s;
+    }
+    .session-total.has-selection { border-color: var(--red); background: #fdf0ee; }
+    .session-total-label { color: var(--muted); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
+    .session-total-amount { font-weight: 800; font-size: 1.15rem; color: var(--ink); }
+    .session-total-amount span { color: var(--red); }
+
+    /* ── Consent ── */
+    .consent-item {
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+      padding: .9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: .75rem;
+      transition: border-color .2s;
+    }
+    .consent-item:has(input:checked) { border-color: var(--red); background: #fdf0ee; }
+    .consent-item input[type="checkbox"] {
+      margin-top: .15rem;
+      accent-color: var(--red);
+      flex-shrink: 0;
+      width: 17px; height: 17px;
+    }
+    .consent-text { font-size: .88rem; color: var(--ink); line-height: 1.5; }
+    .consent-text strong { display: block; font-size: .82rem; text-transform: uppercase;
+      letter-spacing: .04em; color: var(--muted); margin-bottom: .2rem; }
+
+    /* ── Submit ── */
+    .submit-area {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: var(--red);
+      color: var(--white);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      padding: .9rem 2.8rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+      box-shadow: 0 3px 10px rgba(192,57,43,.3);
+    }
+    .btn-submit:hover { background: var(--red-dk); }
+    .btn-submit:active { transform: scale(.98); }
+    .submit-note { font-size: .8rem; color: var(--muted); margin-top: .75rem; }
+
+    /* ── Info banner ── */
+    .info-banner {
+      background: #eef4ff;
+      border: 1px solid #c5d8f5;
+      border-radius: 8px;
+      padding: .8rem 1rem;
+      font-size: .85rem;
+      color: #2c4a7c;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: .5rem;
+      align-items: flex-start;
+    }
+
+    /* ══════════════════════════════
+       EDIT MODE
+    ══════════════════════════════ */
+
+    /* Floating edit toggle */
+    #editToggle {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--ink);
+      color: var(--white);
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      padding: .6rem 1.1rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+      transition: background .2s, transform .15s;
+    }
+    #editToggle:hover { background: #2e2e50; }
+    #editToggle.active { background: var(--red); }
+    #editToggle .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #6ee7b7;
+      flex-shrink: 0;
+    }
+    #editToggle.active .dot { background: #fde68a; }
+
+    #resetBtn {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 10rem;
+      z-index: 1000;
+      width: 36px; height: 36px;
+      background: var(--ink);
+      color: #888;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+      transition: color .2s;
+    }
+    #resetBtn:hover { color: white; }
+
+    #pushBtn {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 14rem;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      gap: .4rem;
+      background: #2da44e;
+      color: white;
+      font-size: .85rem;
+      font-weight: 700;
+      padding: .6rem 1.1rem;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+    }
+    #pushBtn:hover { background: #238636; }
+    body.admin-mode #pushBtn { display: flex; }
+
+    #editToggle, #resetBtn { display: none; }
+    body.admin-mode #editToggle, body.admin-mode #resetBtn { display: flex; }
+
+    /* Edit mode — editable zone styling */
+    body.edit-mode [data-editable] {
+      cursor: text;
+      border-radius: 3px;
+      outline: 1.5px dashed rgba(192,57,43,.4);
+      padding: 1px 3px;
+      margin: -1px -3px;
+      transition: outline-color .15s, background .15s;
+    }
+    body.edit-mode [data-editable]:hover {
+      outline-color: var(--red);
+      background: rgba(192,57,43,.07);
+    }
+    body.edit-mode [data-editable]:focus {
+      outline: 2px solid var(--red);
+      background: #fff8f7;
+      box-shadow: 0 0 0 4px rgba(192,57,43,.1);
+    }
+
+    /* Edit mode — freeze form controls */
+    body.edit-mode input[type="text"],
+    body.edit-mode input[type="email"],
+    body.edit-mode input[type="tel"],
+    body.edit-mode input[type="date"],
+    body.edit-mode input[type="number"],
+    body.edit-mode select,
+    body.edit-mode textarea {
+      pointer-events: none;
+      opacity: .55;
+    }
+    body.edit-mode input[type="radio"],
+    body.edit-mode input[type="checkbox"] {
+      pointer-events: none;
+    }
+    body.edit-mode .btn-submit { pointer-events: none; opacity: .55; }
+
+    /* Prevent label clicks from stealing focus from editable spans inside pills */
+    body.edit-mode .radio-group label,
+    body.edit-mode .check-group label {
+      pointer-events: none;
+      cursor: default;
+    }
+    body.edit-mode .radio-group label [data-editable],
+    body.edit-mode .check-group label [data-editable] {
+      pointer-events: auto;
+    }
+    /* Weekcards: disable card-click selection in edit mode */
+    body.edit-mode .session-card { cursor: default; }
+
+    /* Field delete button */
+    .field { position: relative; }
+    .field-delete {
+      display: none;
+      position: absolute;
+      top: 0; right: 0;
+      width: 20px; height: 20px;
+      background: var(--red);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: .85rem;
+      line-height: 1;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      opacity: .75;
+      transition: opacity .15s, transform .1s;
+    }
+    .field-delete:hover { opacity: 1; transform: scale(1.1); }
+    body.edit-mode .field-delete { display: flex; }
+
+    /* Edit mode top banner */
+    #editBanner {
+      display: none;
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: var(--red);
+      color: white;
+      font-size: .8rem;
+      font-weight: 600;
+      text-align: center;
+      padding: .45rem 1rem;
+      letter-spacing: .04em;
+    }
+    body.edit-mode #editBanner { display: block; }
+  </style>
+</head>
+<body>
+
+<div id="editBanner">✏ EDIT MODE — Click any highlighted text to rename it &nbsp;·&nbsp; Press Escape or click Done to exit</div>
+
+
+
+<main>
+
+  <div class="info-banner">
+    ℹ️ <span data-editable>All fields marked with <strong style="color:#c0392b">&nbsp;*&nbsp;</strong> are required. Enrollment is not complete until a confirmation email is received.</span>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-step active"></div>
+    <div class="progress-step active"></div>
+    <div class="progress-step active"></div>
+    <div class="progress-step active"></div>
+    <div class="progress-step active"></div>
+    <span class="progress-label" data-editable>All sections</span>
+  </div>
+
+  <form id="enrollForm" novalidate>
+
+    <!-- 1. WeekSelection -->
+    <div class="section-card">
+      <div class="section-title"><span class="section-icon">🗓</span><span data-editable> Camp Weeks</span></div>
+      <div class="field" style="margin-bottom:1rem;">
+        <label><span data-editable>Select One or More Weeks. All sessions are 9am-3pm. Billing will be handled through Kicksite.</span> <span class="req">*</span></label>
+        <div class="session-grid" id="sessionGrid">
+          <div class="session-card" data-price="600">
+            <input type="checkbox" name="session" value="session1" />
+            <div class="session-check">✓</div>
+            <div class="session-name" data-editable>Week 1</div>
+            <div class="session-dates" data-editable>June 29 – July 3</div>
+            <div class="session-price" data-editable>$600</div>
+          </div>
+          <div class="session-card" data-price="600">
+            <input type="checkbox" name="session" value="session2" />
+            <div class="session-check">✓</div>
+            <div class="session-name" data-editable>Week 2</div>
+            <div class="session-dates" data-editable>July 7 – July 11</div>
+            <div class="session-price" data-editable>$600</div>
+          </div>
+          <div class="session-card" data-price="600">
+            <input type="checkbox" name="session" value="session3" />
+            <div class="session-check">✓</div>
+            <div class="session-name" data-editable>Week 3</div>
+            <div class="session-dates" data-editable>July 14 – July 18</div>
+            <div class="session-price" data-editable>$600</div>
+          </div>
+          <div class="session-card" data-price="600">
+            <input type="checkbox" name="session" value="session4" />
+            <div class="session-check">✓</div>
+            <div class="session-name" data-editable>Week 4</div>
+            <div class="session-dates" data-editable>July 21 – July 25</div>
+            <div class="session-price" data-editable>$600</div>
+          </div>
+          <div class="session-card" data-price="600">
+            <input type="checkbox" name="session" value="session5" />
+            <div class="session-check">✓</div>
+            <div class="session-name" data-editable>Week 5</div>
+            <div class="session-dates" data-editable>July 28 – Aug 1</div>
+            <div class="session-price" data-editable>$600</div>
+          </div>
+        </div>
+        <div class="session-total" id="sessionTotal">
+          <span class="session-total-label">Total</span>
+          <span class="session-total-amount" id="sessionTotalAmt"><span>$0</span></span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 2. Student Information -->
+    <div class="section-card">
+      <div class="section-title"><span class="section-icon">🥋</span><span data-editable> Student Information</span></div>
+      <div class="field-grid">
+        <div class="field">
+          <label><span data-editable>First Name</span> <span class="req">*</span></label>
+          <input type="text" name="student_first" placeholder="First name" required />
+        </div>
+        <div class="field">
+          <label><span data-editable>Last Name</span> <span class="req">*</span></label>
+          <input type="text" name="student_last" placeholder="Last name" required />
+        </div>
+        <div class="field">
+          <label><span data-editable>T-Shirt Size</span> <span class="req">*</span></label>
+          <select name="tshirt" required>
+            <option value="" disabled selected>Select size…</option>
+            <option>Youth XS (4–5)</option>
+            <option>Youth S (6–8)</option>
+            <option>Youth M (10–12)</option>
+            <option>Youth L (14–16)</option>
+            <option>Adult S</option>
+            <option>Adult M</option>
+            <option>Adult L</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Parent / Guardian -->
+    <div class="section-card">
+      <div class="section-title"><span class="section-icon">👤</span><span data-editable> Parent / Guardian</span></div>
+      <div class="field-grid">
+        <div class="field">
+          <label><span data-editable>Guardian First Name</span> <span class="req">*</span></label>
+          <input type="text" name="guardian_first" placeholder="First name" required />
+        </div>
+        <div class="field">
+          <label><span data-editable>Guardian Last Name</span> <span class="req">*</span></label>
+          <input type="text" name="guardian_last" placeholder="Last name" required />
+        </div>
+        <div class="field">
+          <label><span data-editable>Relationship to Student</span> <span class="req">*</span></label>
+          <select name="relationship" required>
+            <option value="" disabled selected>Select…</option>
+            <option>Parent</option>
+            <option>Legal Guardian</option>
+            <option>Grandparent</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label><span data-editable>Primary Phone</span> <span class="req">*</span></label>
+          <input type="tel" name="phone_primary" placeholder="(555) 000-0000" required />
+        </div>
+        <div class="field">
+          <label><span data-editable>Alternate Phone</span></label>
+          <input type="tel" name="phone_alt" placeholder="(555) 000-0000" />
+        </div>
+        <div class="field">
+          <label><span data-editable>Email Address</span> <span class="req">*</span></label>
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="field span-2">
+          <label><span data-editable>Home Address</span> <span class="req">*</span></label>
+          <input type="text" name="address" placeholder="Street address" required />
+        </div>
+        <div class="field">
+          <label><span data-editable>City</span> <span class="req">*</span></label>
+          <input type="text" name="city" placeholder="City" required />
+        </div>
+        <div class="field">
+          <label><span data-editable>State</span></label>
+          <input type="text" name="state" placeholder="State" maxlength="2" />
+        </div>
+        <div class="field">
+          <label><span data-editable>ZIP Code</span></label>
+          <input type="text" name="zip" placeholder="12345" maxlength="10" />
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Emergency Contact -->
+    <div class="section-card">
+      <div class="section-title"><span class="section-icon">🚨</span><span data-editable> Emergency Contact</span></div>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1rem;" data-editable>Must be a different person from the primary guardian listed above.</p>
+      <div class="field-grid">
+        <div class="field">
+          <label><span data-editable>Full Name</span> <span class="req">*</span></label>
+          <input type="text" name="ec_name" placeholder="Full name" required />
+        </div>
+        <div class="field">
+          <label><span data-editable>Relationship</span> <span class="req">*</span></label>
+          <input type="text" name="ec_relationship" placeholder="e.g. Aunt, Uncle, Family friend" required />
+        </div>
+        <div class="field">
+          <label><span data-editable>Phone</span> <span class="req">*</span></label>
+          <input type="tel" name="ec_phone" placeholder="(555) 000-0000" required />
+        </div>
+        <div class="field">
+          <label><span data-editable>Alternate Phone</span></label>
+          <input type="tel" name="ec_phone_alt" placeholder="(555) 000-0000" />
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Medical & Health -->
+    <div class="section-card">
+      <div class="section-title"><span class="section-icon">🏥</span><span data-editable> Medical &amp; Health</span></div>
+      <div class="field-grid full">
+        <div class="field">
+          <label><span data-editable>Known Allergies (food, medication, environmental)</span></label>
+          <textarea name="allergies" placeholder="List any allergies, or write 'None'"></textarea>
+        </div>
+        <div class="field">
+          <label><span data-editable>Current Medications</span></label>
+          <textarea name="medications" placeholder="Name, dosage, and schedule — or write 'None'"></textarea>
+        </div>
+        <div class="field">
+          <label><span data-editable>Medical Conditions / Physical Limitations</span></label>
+          <textarea name="medical_conditions" placeholder="Asthma, diabetes, recent injuries, etc. — or write 'None'"></textarea>
+        </div>
+        <div class="field">
+          <label><span data-editable>Primary Care Physician</span></label>
+          <input type="text" name="doctor" placeholder="Dr. Name — Clinic Name" />
+        </div>
+        <div class="field">
+          <label><span data-editable>Physician Phone</span></label>
+          <input type="tel" name="doctor_phone" placeholder="(555) 000-0000" />
+        </div>
+        <div class="field">
+          <label><span data-editable>Insurance Provider</span></label>
+          <input type="text" name="insurance" placeholder="Provider name &amp; policy number" />
+        </div>
+        <div class="field">
+          <label><span data-editable>Can the student self-administer medication?</span> <span class="req">*</span></label>
+          <div class="radio-group">
+            <label><input type="radio" name="self_medicate" value="yes" required /> <span data-editable>Yes</span></label>
+            <label><input type="radio" name="self_medicate" value="no" /> <span data-editable>No</span></label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Additional Info -->
+    <div class="section-card">
+      <div class="section-title"><span class="section-icon">📋</span><span data-editable> Additional Information</span></div>
+      <div class="field-grid full">
+        <div class="field">
+          <label><span data-editable>Dietary Restrictions / Food Preferences</span></label>
+          <div class="check-group">
+            <label><input type="checkbox" name="diet" value="vegetarian" /> <span data-editable>Vegetarian</span></label>
+            <label><input type="checkbox" name="diet" value="vegan" /> <span data-editable>Vegan</span></label>
+            <label><input type="checkbox" name="diet" value="gluten_free" /> <span data-editable>Gluten-free</span></label>
+            <label><input type="checkbox" name="diet" value="nut_free" /> <span data-editable>Nut-free</span></label>
+            <label><input type="checkbox" name="diet" value="halal" /> <span data-editable>Halal</span></label>
+            <label><input type="checkbox" name="diet" value="kosher" /> <span data-editable>Kosher</span></label>
+            <label><input type="checkbox" name="diet" value="other_diet" /> <span data-editable>Other</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label><span data-editable>Dietary Notes</span></label>
+          <input type="text" name="diet_notes" placeholder="Describe any other restrictions…" />
+        </div>
+        <div class="field">
+          <label><span data-editable>Special Needs / Accommodations Requested</span></label>
+          <textarea name="accommodations" placeholder="Learning differences, mobility, sensory, or other needs we should know about…"></textarea>
+        </div>
+        <div class="field">
+          <label><span data-editable>How did you hear about Daruma Camp?</span></label>
+          <select name="referral">
+            <option value="" disabled selected>Select…</option>
+            <option>Returning camper / family</option>
+            <option>Friend or family referral</option>
+            <option>Instructor / dojo referral</option>
+            <option>School flyer or announcement</option>
+            <option>Social media</option>
+            <option>Web search</option>
+            <option>Community bulletin board</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label><span data-editable>Additional Comments</span></label>
+          <textarea name="comments" placeholder="Anything else you'd like the camp directors to know…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Consents & Waivers -->
+    <div class="section-card">
+      <div class="section-title"><span class="section-icon">✍️</span><span data-editable> Consents &amp; Waivers</span></div>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.2rem;" data-editable>Please read and acknowledge each item. All items are required.</p>
+
+      <div class="consent-item">
+        <input type="checkbox" name="consent_medical" id="c1" required />
+        <div class="consent-text">
+          <strong data-editable>Medical Treatment Authorization</strong>
+          <span data-editable>I authorize Daruma Martial Arts Camp staff to seek emergency medical treatment for my child if I cannot be reached in time. I understand that all reasonable attempts will be made to contact me first.</span>
+        </div>
+      </div>
+
+      <div class="consent-item">
+        <input type="checkbox" name="consent_liability" id="c2" required />
+        <div class="consent-text">
+          <strong data-editable>Liability Waiver</strong>
+          <span data-editable>I acknowledge that martial arts activities involve physical contact and inherent risk of injury. I release Daruma Martial Arts Camp, its instructors, and staff from liability for injuries arising from normal participation in camp activities.</span>
+        </div>
+      </div>
+
+      <div class="consent-item">
+        <input type="checkbox" name="consent_photo" id="c3" required />
+        <div class="consent-text">
+          <strong data-editable>Photo &amp; Media Release</strong>
+          <span data-editable>I grant Daruma Martial Arts Camp permission to photograph and/or video my child during camp activities for use in promotional materials, social media, and website content. My child will not be identified by full name without separate written consent.</span>
+        </div>
+      </div>
+
+      <div class="consent-item">
+        <input type="checkbox" name="consent_conduct" id="c4" required />
+        <div class="consent-text">
+          <strong data-editable>Code of Conduct</strong>
+          <span data-editable>I have reviewed the following rules with my child: Be respectful to instructors, teammates, and yourself. Use martial arts skills only for practice — never to bully or harm others. Listen and follow instructions the first time. Take care of equipment and the training space. Include everyone and cheer each other on. Have fun and try your best every day. I understand that unsafe or disrespectful behavior may result in dismissal from camp without refund.</span>
+        </div>
+      </div>
+
+      <div class="consent-item">
+        <input type="checkbox" name="consent_offsite" id="c5" required />
+        <div class="consent-text">
+          <strong data-editable>Off-Site Activities</strong>
+          <span data-editable>I grant permission for my child to participate in off-site activities organized by Daruma Martial Arts Camp, including field trips and competitions. I understand that transportation will be provided and that all off-site events are supervised by qualified staff. I acknowledge the inherent risks associated with travel and off-site activities and release Daruma Martial Arts Camp from liability for incidents arising from normal participation in such events.</span>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:1.5rem;">
+        <label><span data-editable>Parent / Guardian Signature (Full Name)</span> <span class="req">*</span></label>
+        <input type="text" name="signature" placeholder="Type your full legal name to sign" required />
+      </div>
+      <div class="field" style="margin-top:.75rem;">
+        <label><span data-editable>Date</span> <span class="req">*</span></label>
+        <input type="date" name="sign_date" required />
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="submit-area">
+      <button type="submit" class="btn-submit">
+        ⬤ &nbsp;<span data-editable>Complete Enrollment</span>
+      </button>
+      <p class="submit-note" data-editable>A confirmation email will be sent to the address provided above. Enrollment is pending until payment is processed.</p>
+    </div>
+
+  </form>
+</main>
+
+<!-- Edit toggle button -->
+<button id="editToggle" title="Toggle label editing">
+  <span class="dot"></span>
+  <span id="editLabel">Edit Labels</span>
+</button>
+<button id="resetBtn" title="Clear saved edits and reload" onclick="location.reload()">↺</button>
+<button id="pushBtn" title="Save edits to GitHub">⬆ Push</button>
+
+<script>
+  // ── Lock all editable elements for normal users ──
+  document.querySelectorAll('[data-editable]').forEach(el => {
+    el.contentEditable = 'false';
+  });
+
+  // ── Admin mode (add ?edit to URL to show edit controls) ──
+  if (new URLSearchParams(location.search).has('edit')) {
+    document.body.classList.add('admin-mode');
+  }
+
+  // ── Lock all editable elements for normal users ──
+  document.querySelectorAll('[data-editable]').forEach(el => {
+    el.contentEditable = 'false';
+  });
+
+  // ── Default sign date (only if blank) ──
+  const signDate = document.querySelector('[name="sign_date"]');
+  if (signDate && !signDate.value) signDate.value = new Date().toISOString().split('T')[0];
+
+  // ── Weekcard selection & total ──
+  function getSessionGrid()  { return document.getElementById('sessionGrid'); }
+  function getTotalEl()      { return document.getElementById('sessionTotal'); }
+  function getTotalAmtEl()   { return document.getElementById('sessionTotalAmt'); }
+
+  function updateTotal() {
+    const grid = getSessionGrid();
+    const amtEl = getTotalAmtEl();
+    const totEl = getTotalEl();
+    if (!grid || !amtEl || !totEl) return;
+    let sum = 0;
+    grid.querySelectorAll('.session-card.selected').forEach(card => {
+      sum += parseInt(card.dataset.price, 10) || 0;
+    });
+    amtEl.innerHTML = sum > 0 ? `<span>$${sum.toLocaleString()}</span>` : '<span>$0</span>';
+    totEl.classList.toggle('has-selection', sum > 0);
+  }
+
+  updateTotal(); // reflect any restored selections
+
+  document.getElementById('enrollForm').addEventListener('click', e => {
+    if (editing) return;
+    const card = e.target.closest('.session-card');
+    if (!card || !card.closest('#sessionGrid')) return;
+    card.classList.toggle('selected');
+    card.querySelector('input[type="checkbox"]').checked = card.classList.contains('selected');
+    updateTotal();
+  });
+
+  // ── Edit mode ──
+  const toggleBtn = document.getElementById('editToggle');
+  const editLabel = document.getElementById('editLabel');
+  let editing = false;
+
+  function setEditMode(on) {
+    editing = on;
+    document.body.classList.toggle('edit-mode', on);
+    toggleBtn.classList.toggle('active', on);
+    editLabel.textContent = on ? 'Done Editing' : 'Edit Labels';
+    document.querySelectorAll('[data-editable]').forEach(el => {
+      el.contentEditable = on ? 'true' : 'false';
+      if (!on) el.blur();
+    });
+    if (on) {
+      document.querySelectorAll('.field').forEach(field => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'field-delete';
+        btn.title = 'Delete field';
+        btn.textContent = '×';
+        btn.addEventListener('click', () => { field.remove(); });
+        field.appendChild(btn);
+      });
+    } else {
+      document.querySelectorAll('.field-delete').forEach(btn => btn.remove());
+      saveToDisk();
+    }
+  }
+
+  function saveToDisk() {
+    try {
+      const clone = document.documentElement.cloneNode(true);
+      clone.querySelectorAll('[data-editable]').forEach(el => el.removeAttribute('contenteditable'));
+      clone.querySelectorAll('.field-delete').forEach(el => el.remove());
+      clone.body.classList.remove('edit-mode', 'admin-mode');
+      const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+      fetch('http://localhost:3456/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ html })
+      }).then(() => console.log('Saved to disk'))
+        .catch(err => console.error('Save failed:', err));
+    } catch(e) {}
+  }
+
+
+
+  toggleBtn.addEventListener('click', () => setEditMode(!editing));
+
+  // Escape key exits edit mode
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && editing) { setEditMode(false); return; }
+    // Enter commits single-line editable without inserting <br>
+    if (e.key === 'Enter' && e.target.dataset.editable !== undefined && editing) {
+      const tag = e.target.tagName;
+      if (tag !== 'P' && tag !== 'SPAN' || !e.target.closest('.consent-text')) {
+        e.preventDefault();
+        e.target.blur();
+      }
+    }
+  });
+
+  // Prevent paste from bringing in rich formatting
+  document.addEventListener('paste', e => {
+    if (!editing) return;
+    const t = e.target;
+    if (t.hasAttribute('data-editable')) {
+      e.preventDefault();
+      const text = e.clipboardData.getData('text/plain');
+      document.execCommand('insertText', false, text);
+    }
+  });
+
+  // ── Form submit ──
+  document.getElementById('enrollForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (editing) return;
+
+    const required = this.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(el => {
+      if (el.type === 'radio') {
+        const group = this.querySelectorAll(`[name="${el.name}"]`);
+        if (![...group].some(r => r.checked)) valid = false;
+      } else if (el.type === 'checkbox') {
+        if (!el.checked) { valid = false; el.closest('.consent-item').style.outline = '2px solid #c0392b'; }
+      } else {
+        if (!el.value.trim()) { valid = false; el.style.borderColor = '#c0392b'; }
+        else el.style.borderColor = '';
+      }
+    });
+
+    if (!valid) { alert('Please fill in all required fields before submitting.'); return; }
+
+    const fd = new FormData(this);
+    const sessions = [...document.querySelectorAll('#sessionGrid .session-card.selected')]
+      .map(c => c.querySelector('.session-name').textContent).join(', ');
+    fd.set('session', sessions);
+
+    // Formsubmit.co — no backend needed, sends email on submission
+    fd.append('_cc', 'hellomonikasue@gmail.com,darumamartialarts@gmail.com');
+    fd.append('_subject', 'New Daruma Camp Enrollment: ' + (fd.get('student_first') || '') + ' ' + (fd.get('student_last') || ''));
+    fd.append('_template', 'table');
+    fd.append('_captcha', 'false');
+
+    fetch('https://formsubmit.co/ajax/stevenhodas@gmail.com', {
+      method: 'POST',
+      body: fd
+    }).catch(() => {});
+
+    alert('Thank you! Your enrollment has been submitted. Watch for a confirmation email shortly.');
+    location.reload();
+  });
+
+  // ── Push to GitHub ──
+  const GH_TOKEN_KEY = 'daruma-gh-token';
+  const GH_REPO      = 'stevendhodas-beep/daruma-camp';
+  const GH_FILE      = 'index.html';
+  const GH_API       = 'https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_FILE;
+
+  function getCleanHTML() {
+    const clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('[data-editable]').forEach(el => el.removeAttribute('contenteditable'));
+    clone.querySelectorAll('.field-delete').forEach(el => el.remove());
+    const cloneBody = clone.querySelector('body');
+    if (cloneBody) cloneBody.classList.remove('edit-mode', 'admin-mode');
+    return '<!DOCTYPE html>\n' + clone.outerHTML;
+  }
+
+  document.getElementById('pushBtn').addEventListener('click', async () => {
+    let token = localStorage.getItem(GH_TOKEN_KEY);
+    if (!token) {
+      token = prompt('Enter your GitHub personal access token (stored locally, never sent anywhere except GitHub):');
+      if (!token) return;
+      localStorage.setItem(GH_TOKEN_KEY, token.trim());
+      token = token.trim();
+    }
+
+    const btn = document.getElementById('pushBtn');
+    btn.textContent = '⏳ Pushing…';
+    btn.disabled = true;
+
+    try {
+      // 1. Get current file SHA
+      const metaRes = await fetch(GH_API, {
+        headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github+json' }
+      });
+      if (!metaRes.ok) throw new Error('Could not fetch file metadata (' + metaRes.status + ')');
+      const meta = await metaRes.json();
+      const sha = meta.sha;
+
+      // 2. Encode current HTML as base64
+      const html = getCleanHTML();
+      const b64  = btoa(unescape(encodeURIComponent(html)));
+
+      // 3. Commit
+      const putRes = await fetch(GH_API, {
+        method: 'PUT',
+        headers: {
+          Authorization: 'token ' + token,
+          Accept: 'application/vnd.github+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: 'Update enrollment form via admin editor',
+          content: b64,
+          sha: sha
+        })
+      });
+
+      if (!putRes.ok) {
+        const err = await putRes.json().catch(() => ({}));
+        throw new Error((err.message || putRes.status) + ' — try clearing your token and re-entering it.');
+      }
+
+      btn.textContent = '✓ Pushed!';
+      setTimeout(() => { btn.textContent = '⬆ Push'; btn.disabled = false; }, 3000);
+    } catch (err) {
+      alert('Push failed: ' + err.message);
+      btn.textContent = '⬆ Push';
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
