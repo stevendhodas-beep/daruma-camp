@@ -1042,14 +1042,8 @@
     }).catch(() => {});
 
     alert('Thank you! Your enrollment has been submitted. Watch for a confirmation email shortly.');
-    this.reset();
-    document.querySelectorAll('#sessionGrid .session-card').forEach(c => {
-      c.classList.remove('selected');
-      c.querySelector('input').checked = false;
-    });
-    updateTotal();
-    const sd = document.querySelector('[name="sign_date"]');
-    if (sd) sd.value = new Date().toISOString().split('T')[0];
+    localStorage.removeItem(SAVE_KEY);
+    location.reload();
   });
 
   // ── Push to GitHub ──
